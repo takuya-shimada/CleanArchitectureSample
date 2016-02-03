@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">CleanArchitectureSample</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="menu_about_app">About App</string>
+
+    <string name="dialog_title">About app</string>
+    <string name="dialog_message">This is an Android clean architecture sample. The domain logic is so simple.</string>
+    <string name="dialog_button_label">OK</string>
+
 </resources>

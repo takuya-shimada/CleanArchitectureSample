@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- references: The Google I/O 2014 Android App
+    https://github.com/google/iosched/blob/master/android/src/main/res/values/fonts.xml -->
+
+    <string name="font_fontFamily_regular">sans-serif</string>
+    <string name="font_fontFamily_light">sans-serif-light</string>
+    <string name="font_fontFamily_medium">sans-serif</string>
+
+    <integer name="font_textStyle_medium">1</integer>
+
+</resources>

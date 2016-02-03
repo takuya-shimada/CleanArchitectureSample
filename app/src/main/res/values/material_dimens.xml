@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <!-- elevation -->
+    <dimen name="elevation_app_bar">4dp</dimen>
+    <dimen name="elevation_fab">6dp</dimen>
+    <dimen name="elevation_card">2dp</dimen>
+    <dimen name="elevation_button">2dp</dimen>
+    <dimen name="elevation_other">2dp</dimen>
+
+    <!-- floating action button -->
+    <dimen name="fab_size">56dp</dimen>
+
+    <!-- Button -->
+    <dimen name="button_min_width">64dp</dimen>
+    <dimen name="button_height">36dp</dimen>
+
+</resources>

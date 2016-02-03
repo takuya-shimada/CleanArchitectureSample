@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tyfrontier.cleanarchitecturesample.presentation.view.component.ArticleListItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/article_item_padding"
+    android:paddingBottom="@dimen/article_item_padding_bottom"
+    android:paddingLeft="@dimen/article_item_padding"
+    android:paddingRight="@dimen/article_item_padding">
+
+    <TextView
+        style="@style/Typography.Body1.Dp"
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:textColor="@color/material_black_opacity_26"/>
+
+    <TextView
+        style="@style/Typography.Subhead1.Dp"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/article_item_title_height_text"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/article_item_title_margin_bottom"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:scrollHorizontally="true"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_vertical"
+                  android:gravity="center_vertical"
+                  android:layout_marginTop="@dimen/article_item_info_margin_top">
+
+        <TextView
+            style="@style/Typography.Body1.Dp"
+            android:id="@+id/user"
+            android:layout_width="@dimen/article_item_date_width"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            style="@style/Typography.Body1.Dp"
+            android:id="@+id/tags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="right"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="@color/accent"/>
+
+    </LinearLayout>
+
+</tyfrontier.cleanarchitecturesample.presentation.view.component.ArticleListItemView>

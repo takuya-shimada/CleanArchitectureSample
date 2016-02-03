@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- google's material design typography from
+    http://www.google.com/design/spec/style/typography.html# -->
+
+    <!-- base style of Typography -->
+    <style name="Typography">
+        <item name="android:textColor">@color/material_black_opacity_87</item>
+    </style>
+
+    <!-- sp style -->
+    <style name="Typography.Title" parent="Typography">
+        <item name="android:fontFamily">@string/font_fontFamily_medium</item>
+        <item name="android:textStyle">@integer/font_textStyle_medium</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Typography.Subhead1" parent="Typography">
+        <item name="android:fontFamily">@string/font_fontFamily_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">@dimen/gap_between_leading_and_type_subhead1</item>
+    </style>
+
+    <style name="Typography.Body1" parent="Typography">
+        <item name="android:fontFamily">@string/font_fontFamily_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingTop">@dimen/gap_between_leading_and_type_body1</item>
+    </style>
+
+    <style name="Typography.Body2" parent="Typography">
+        <item name="android:fontFamily">@string/font_fontFamily_medium</item>
+        <item name="android:textStyle">@integer/font_textStyle_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingTop">@dimen/gap_between_leading_and_type_body2</item>
+    </style>
+
+    <style name="Typography.Caption" parent="Typography">
+        <item name="android:fontFamily">@string/font_fontFamily_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- dp style -->
+    <style name="Typography.Title.Dp" parent="Typography.Title">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="Typography.Subhead1.Dp" parent="Typography.Subhead1">
+        <item name="android:textSize">16dp</item>
+        <item name="android:paddingTop">@dimen/gap_between_leading_and_type_subhead1_dp</item>
+    </style>
+
+    <style name="Typography.Body1.Dp" parent="Typography.Body1">
+        <item name="android:textSize">14dp</item>
+        <item name="android:paddingTop">@dimen/gap_between_leading_and_type_body1_dp</item>
+    </style>
+
+    <style name="Typography.Body2.Dp" parent="Typography.Body2">
+        <item name="android:textSize">14dp</item>
+        <item name="android:paddingTop">@dimen/gap_between_leading_and_type_body2_dp</item>
+    </style>
+
+    <style name="Typography.Caption.Dp" parent="Typography.Caption">
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <!-- Gap between Leading and Type
+     http://www.google.com/design/spec/style/typography.html#typography-line-height -->
+    <dimen name="gap_between_leading_and_type_subhead1">8sp</dimen>
+    <dimen name="gap_between_leading_and_type_subhead1_dp">8dp</dimen>
+    <dimen name="gap_between_leading_and_type_body1">6sp</dimen>
+    <dimen name="gap_between_leading_and_type_body1_dp">6dp</dimen>
+    <dimen name="gap_between_leading_and_type_body2">10sp</dimen>
+    <dimen name="gap_between_leading_and_type_body2_dp">10dp</dimen>
+
+</resources>
