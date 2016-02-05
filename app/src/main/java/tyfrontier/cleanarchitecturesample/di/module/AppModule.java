@@ -9,16 +9,16 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class ApplicationModule {
+public class AppModule {
 
     private final Application application;
 
-    public ApplicationModule(Application application) {
+    public AppModule(Application application) {
         this.application = application;
     }
 
     @Provides @Singleton
-    Context provideApplicationContext() {
+    Context context() {
         return application;
     }
 }

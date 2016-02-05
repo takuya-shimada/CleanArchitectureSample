@@ -1,16 +1,12 @@
 package tyfrontier.cleanarchitecturesample.di.component.screen;
 
-import dagger.Component;
+import dagger.Subcomponent;
 import tyfrontier.cleanarchitecturesample.di.PerActivity;
-import tyfrontier.cleanarchitecturesample.di.component.ApplicationComponent;
-import tyfrontier.cleanarchitecturesample.di.module.ActivityModule;
 import tyfrontier.cleanarchitecturesample.di.module.screen.TopScreenModule;
 import tyfrontier.cleanarchitecturesample.presentation.view.MainActivity;
 
-@Component(
-        dependencies = ApplicationComponent.class,
+@Subcomponent(
         modules = {
-                ActivityModule.class,
                 TopScreenModule.class,
         }
 )

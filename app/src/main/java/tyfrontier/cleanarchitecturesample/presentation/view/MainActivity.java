@@ -16,8 +16,6 @@ import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import tyfrontier.cleanarchitecturesample.MainApplication;
 import tyfrontier.cleanarchitecturesample.R;
-import tyfrontier.cleanarchitecturesample.di.component.screen.DaggerTopScreenComponent;
-import tyfrontier.cleanarchitecturesample.di.module.ActivityModule;
 import tyfrontier.cleanarchitecturesample.di.module.screen.TopScreenModule;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
 import tyfrontier.cleanarchitecturesample.presentation.presenter.TopPresenter;
@@ -36,12 +34,7 @@ public class MainActivity extends AppCompatActivity implements TopView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        DaggerTopScreenComponent.builder()
-                .applicationComponent(((MainApplication)getApplication()).getApplicationComponent())
-                .activityModule(new ActivityModule(this))
-                .topScreenModule(new TopScreenModule(this))
-                .build()
-                .inject(this);
+        ((MainApplication)getApplication()).appComponent().plus(new TopScreenModule(this, this)).inject(this);
         if (topPresenter != null) {
             topPresenter.onCreate();
         }

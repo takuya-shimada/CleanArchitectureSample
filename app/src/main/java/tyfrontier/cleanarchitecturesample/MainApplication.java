@@ -2,24 +2,21 @@ package tyfrontier.cleanarchitecturesample;
 
 import android.app.Application;
 
-import tyfrontier.cleanarchitecturesample.di.component.ApplicationComponent;
-import tyfrontier.cleanarchitecturesample.di.component.DaggerApplicationComponent;
-import tyfrontier.cleanarchitecturesample.di.module.ApplicationModule;
+import tyfrontier.cleanarchitecturesample.di.component.AppComponent;
+import tyfrontier.cleanarchitecturesample.di.component.DaggerAppComponent;
+import tyfrontier.cleanarchitecturesample.di.module.AppModule;
 
 public class MainApplication extends Application {
 
-    private ApplicationComponent applicationComponent;
+    private AppComponent appComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        applicationComponent = DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule(this))
-                .build();
-        applicationComponent.inject(this);
+        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
     }
 
-    public ApplicationComponent getApplicationComponent() {
-        return applicationComponent;
+    public AppComponent appComponent() {
+        return appComponent;
     }
 }

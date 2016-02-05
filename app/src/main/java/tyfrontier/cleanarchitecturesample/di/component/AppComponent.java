@@ -4,22 +4,22 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import tyfrontier.cleanarchitecturesample.MainApplication;
-import tyfrontier.cleanarchitecturesample.di.module.ApplicationModule;
+import tyfrontier.cleanarchitecturesample.di.component.screen.TopScreenComponent;
+import tyfrontier.cleanarchitecturesample.di.module.AppModule;
 import tyfrontier.cleanarchitecturesample.di.module.DataModule;
 import tyfrontier.cleanarchitecturesample.di.module.DomainModule;
-import tyfrontier.cleanarchitecturesample.domain.usecase.FindArticles;
-import tyfrontier.cleanarchitecturesample.domain.usecase.UseCase;
+import tyfrontier.cleanarchitecturesample.di.module.screen.TopScreenModule;
 
 @Component(
         modules = {
-                ApplicationModule.class,
+                AppModule.class,
                 DomainModule.class,
                 DataModule.class,
         }
 )
 @Singleton
-public interface ApplicationComponent {
+public interface AppComponent {
     void inject(MainApplication mainApplication);
 
-    FindArticles getFindArticles();
+    TopScreenComponent plus(TopScreenModule topScreenModule);
 }

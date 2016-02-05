@@ -11,7 +11,7 @@ import tyfrontier.cleanarchitecturesample.domain.net.WebApi;
 public class DataModule {
 
     @Provides @Singleton
-    public WebApi provideWebApi(WebApiImpl webApi) {
+    public WebApi webApi(WebApiImpl webApi) {
         return webApi;
     }
 }

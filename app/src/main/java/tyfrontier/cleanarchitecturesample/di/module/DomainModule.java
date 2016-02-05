@@ -11,12 +11,12 @@ import tyfrontier.cleanarchitecturesample.domain.usecase.FindArticlesImpl;
 public class DomainModule {
 
     @Provides
-    public FindArticles provideFindArticles(FindArticlesImpl findArticles) {
+    public FindArticles findArticles(FindArticlesImpl findArticles) {
         return findArticles;
     }
 
     @Provides
-    public ArticleService provideArticleService(WebApi webApi) {
+    public ArticleService articleService(WebApi webApi) {
         return new ArticleService(webApi);
     }
 }
