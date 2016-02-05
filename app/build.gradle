@@ -1,3 +1,7 @@
+def versionMajor = 0
+def versionMinor = 1
+def versionPatch = 1
+
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
@@ -18,8 +22,8 @@ android {
         applicationId "tyfrontier.cleanarchitecturesample"
         minSdkVersion 19
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
     }
     buildTypes {
         release {
