@@ -24,12 +24,16 @@ android {
         targetSdkVersion 23
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+        testInstrumentationRunner 'tyfrontier.cleanarchitecturesample.MyTestRunner'
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
 }
 
@@ -47,10 +51,17 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.1.0'
 
     // DI
-    apt 'com.google.dagger:dagger-compiler:2.0'
-    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.google.dagger:dagger-compiler:2.0'
+    compile 'javax.annotation:javax.annotation-api:1.2'
     compile 'com.google.dagger:dagger:2.0'
 
     // View Binding
     compile 'com.jakewharton:butterknife:7.0.1'
+
+    // Unit Test
+    androidTestCompile 'junit:junit:4.12'
+    androidTestCompile('com.android.support.test:runner:0.4.1') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
 }
