@@ -23,11 +23,7 @@ public class WebApiImpl implements WebApi {
 
     @Override
     public Observable<List<Article>> getArticles(int page, int perPage) {
-        return apiService.getArticles(page, perPage, null).map(new Func1<List<ArticleDto>, List<Article>>() {
-            @Override
-            public List<Article> call(List<ArticleDto> articleDtos) {
-            return new ArticleMapper().map(articleDtos);
-            }
-        });
+        return apiService.getArticles(page, perPage, null)
+                .map(articleDtos -> new ArticleMapper().map(articleDtos));
     }
 }
