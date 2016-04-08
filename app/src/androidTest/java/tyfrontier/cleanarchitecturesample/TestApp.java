@@ -4,7 +4,7 @@ import tyfrontier.cleanarchitecturesample.di.component.DaggerTestAppComponent;
 import tyfrontier.cleanarchitecturesample.di.component.TestAppComponent;
 import tyfrontier.cleanarchitecturesample.di.module.TestAppModule;
 
-public class TestMainApplication extends MainApplication {
+public class TestApp extends App {
 
     TestAppComponent appComponent;
 

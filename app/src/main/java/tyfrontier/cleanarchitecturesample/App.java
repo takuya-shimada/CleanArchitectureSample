@@ -6,7 +6,7 @@ import tyfrontier.cleanarchitecturesample.di.component.AppComponent;
 import tyfrontier.cleanarchitecturesample.di.component.DaggerAppComponent;
 import tyfrontier.cleanarchitecturesample.di.module.AppModule;
 
-public class MainApplication extends Application {
+public class App extends Application {
 
     private AppComponent appComponent;
 

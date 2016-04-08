@@ -18,7 +18,7 @@ import javax.inject.Inject;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import tyfrontier.cleanarchitecturesample.TestMainApplication;
+import tyfrontier.cleanarchitecturesample.TestApp;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -35,7 +35,7 @@ public class WebApiTest {
 
     @Before
     public void setUp() throws Exception {
-        ((TestMainApplication)InstrumentationRegistry.getTargetContext().getApplicationContext())
+        ((TestApp)InstrumentationRegistry.getTargetContext().getApplicationContext())
                 .appComponent()
                 .inject(this);
     }

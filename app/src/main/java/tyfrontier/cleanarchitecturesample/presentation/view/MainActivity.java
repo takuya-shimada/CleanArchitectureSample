@@ -14,7 +14,7 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
-import tyfrontier.cleanarchitecturesample.MainApplication;
+import tyfrontier.cleanarchitecturesample.App;
 import tyfrontier.cleanarchitecturesample.R;
 import tyfrontier.cleanarchitecturesample.di.module.screen.TopScreenModule;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements TopView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        ((MainApplication)getApplication()).appComponent().plus(new TopScreenModule(this, this)).inject(this);
+        ((App)getApplication()).appComponent().plus(new TopScreenModule(this, this)).inject(this);
         if (topPresenter != null) {
             topPresenter.onCreate();
         }
