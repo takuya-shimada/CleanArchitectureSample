@@ -13,6 +13,6 @@ dependencies:
 
 deployment:
   production:
-    branch: master
+    branch: [master, circle_ci]
     commands:
       - ./gradlew uploadDeployGateRelease
