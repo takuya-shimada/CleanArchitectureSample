@@ -28,7 +28,6 @@ android {
         targetSdkVersion 23
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
-        testInstrumentationRunner 'tyfrontier.cleanarchitecturesample.MyTestRunner'
     }
     signingConfigs {
         debug {
@@ -95,11 +94,11 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
 
     // Unit Test
-    androidTestCompile 'junit:junit:4.12'
-    androidTestCompile('com.android.support.test:runner:0.4.1') {
+    testCompile 'junit:junit:4.12'
+    testCompile('com.android.support.test:runner:0.4.1') {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
 }
 
 deploygate {
