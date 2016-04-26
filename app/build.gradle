@@ -115,14 +115,12 @@ deploygate {
     token = System.getenv('DEPLOYGATE_API_TOKEN') != null ? System.getenv('DEPLOYGATE_API_TOKEN') : deploygate_api_token
     apks {
         debug {
-            def hash = 'git rev-parse --short HEAD'.execute([], project.rootDir).in.text.trim()
-            message = "https://github.com/tyfrontier/CleanArchitectureSample/tree/${hash}"
-            distributionKey = "bb433ddad2904b8465500cb62b37980752d7b124"
+            message = "r${versionBuild} v${versionMajor}.${versionMinor}.${versionPatch} for debug"
+            distributionKey = "f5fb3aef071d11a9a1f5aa2b278f86cb5e758e8a"
             sourceFile = file("${project.rootDir}/app/build/outputs/apk/app-debug.apk")
         }
         release {
-            def hash = 'git rev-parse --short HEAD'.execute([], project.rootDir).in.text.trim()
-            message = "https://github.com/tyfrontier/CleanArchitectureSample/tree/${hash}"
+            message = "r${versionBuild} v${versionMajor}.${versionMinor}.${versionPatch} for release"
             distributionKey = "bb433ddad2904b8465500cb62b37980752d7b124"
             sourceFile = file("${project.rootDir}/app/build/outputs/apk/app-release.apk")
         }
