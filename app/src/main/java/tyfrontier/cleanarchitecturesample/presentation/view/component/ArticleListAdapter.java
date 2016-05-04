@@ -15,12 +15,11 @@ import tyfrontier.cleanarchitecturesample.domain.model.Article;
 
 public class ArticleListAdapter extends ArrayAdapter<Article> {
 
-    private List<Article> articles;
+    private List<Article> articles = new ArrayList<>();
     private int mItemLayoutResource;
 
-    public ArticleListAdapter(Context context, @LayoutRes int resource, List<Article> articles) {
+    public ArticleListAdapter(Context context, @LayoutRes int resource) {
         super(context, resource);
-        this.articles = articles == null ? new ArrayList<Article>() : articles;
         mItemLayoutResource = resource;
     }
 
@@ -52,6 +51,16 @@ public class ArticleListAdapter extends ArrayAdapter<Article> {
     @Override
     public Article getItem(int position) {
         return articles.get(position);
+    }
+
+    public void clearItem() {
+        articles.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addItem(Article article) {
+        articles.add(article);
+        notifyDataSetChanged();
     }
 
     private String concatenateTags(List<String> tags) {

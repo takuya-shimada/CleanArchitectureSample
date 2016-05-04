@@ -96,11 +96,17 @@ public class MainActivity extends AppCompatActivity implements TopView {
     @Override
     public void initView() {
         setSupportActionBar(toolbar);
+        listView.setAdapter(new ArticleListAdapter(this, R.layout.article_list_item));
     }
 
     @Override
-    public void showArticles(List<Article> articles) {
-        listView.setAdapter(new ArticleListAdapter(this, R.layout.article_list_item, articles));
+    public void resetView() {
+        ((ArticleListAdapter)listView.getAdapter()).clearItem();
+    }
+
+    @Override
+    public void addArticle(Article article) {
+        ((ArticleListAdapter)listView.getAdapter()).addItem(article);
     }
 
     @Override

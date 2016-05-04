@@ -5,7 +5,6 @@ import dagger.Provides;
 import tyfrontier.cleanarchitecturesample.domain.model.ArticleService;
 import tyfrontier.cleanarchitecturesample.domain.net.WebApi;
 import tyfrontier.cleanarchitecturesample.domain.usecase.FindArticles;
-import tyfrontier.cleanarchitecturesample.domain.usecase.FindArticlesImpl;
 
 @Module
 public class TestDomainModule {

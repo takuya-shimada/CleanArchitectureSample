@@ -33,11 +33,11 @@ public class WebApiTest {
     @Test
     public void testGetArticles() throws Exception {
         final int articleNumPerPage = 30;
-        TestSubscriber<List<Article>> testSubscriber = new TestSubscriber<>();
+        TestSubscriber<Article> testSubscriber = new TestSubscriber<>();
 
         webApi.getArticles(1, articleNumPerPage).subscribe(testSubscriber);
         testSubscriber.assertNoErrors();
-        List<Article> articleList = testSubscriber.getOnNextEvents().get(0);
+        List<Article> articleList = testSubscriber.getOnNextEvents();
 
         assertThat(articleList, hasSize(greaterThan(0)));
         assertThat(articleList, hasSize(lessThan(articleNumPerPage + 1)));

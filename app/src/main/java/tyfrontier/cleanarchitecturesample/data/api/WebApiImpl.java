@@ -1,13 +1,9 @@
 package tyfrontier.cleanarchitecturesample.data.api;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import rx.Observable;
-import rx.functions.Func1;
 import tyfrontier.cleanarchitecturesample.data.api.dto.ArticleDto;
-import tyfrontier.cleanarchitecturesample.data.api.mapper.ArticleMapper;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
 import tyfrontier.cleanarchitecturesample.domain.net.WebApi;
 
@@ -22,8 +18,9 @@ public class WebApiImpl implements WebApi {
     }
 
     @Override
-    public Observable<List<Article>> getArticles(int page, int perPage) {
+    public Observable<Article> getArticles(int page, int perPage) {
         return apiService.getArticles(page, perPage, null)
-                .map(articleDtos -> new ArticleMapper().map(articleDtos));
+                .flatMapIterable(articleDtoList -> articleDtoList)
+                .map(ArticleDto::map);
     }
 }
