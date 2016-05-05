@@ -12,6 +12,7 @@ Android clean architecture sample app, using [Qiita API v2](http://qiita.com/api
 - Used Retrofit2
 - Used Dagger2
 - Used ButterKnife
+- Used Retrolambda
 
 ## License
 
