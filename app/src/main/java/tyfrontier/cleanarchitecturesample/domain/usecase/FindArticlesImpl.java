@@ -16,7 +16,7 @@ public class FindArticlesImpl implements FindArticles {
     }
 
     @Override
-    public Observable<Article> call(Integer page) {
-        return articleService.findArticles();
+    public Observable<Article> call(Integer requestIndex) {
+        return articleService.findArticles(requestIndex);
     }
 }

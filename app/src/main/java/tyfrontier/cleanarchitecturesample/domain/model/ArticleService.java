@@ -14,7 +14,7 @@ public class ArticleService {
         this.articleRepository = articleRepository;
     }
 
-    public Observable<Article> findArticles() {
-        return articleRepository.findArticles();
+    public Observable<Article> findArticles(int requestIndex) {
+        return articleRepository.findArticles(requestIndex);
     }
 }

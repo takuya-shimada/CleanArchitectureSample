@@ -15,18 +15,24 @@ import tyfrontier.cleanarchitecturesample.domain.model.Article;
 
 public class ArticleListAdapter extends RecyclerView.Adapter {
 
-    public interface OnItemClickListener {
+    public interface ItemClickListener {
         void onListItemClick(Article article);
+    }
+
+    public interface BindEndListener {
+        void onBindEnd(int position);
     }
 
     private final LayoutInflater inflater;
 
     private final List<Article> articles = new ArrayList<>();
-    private final OnItemClickListener listener;
+    private final ItemClickListener itemClickListener;
+    private final BindEndListener bindEndListener;
 
-    public ArticleListAdapter(Context context, OnItemClickListener listener) {
+    public ArticleListAdapter(Context context, ItemClickListener itemClickListener, BindEndListener bindEndListener) {
         inflater = LayoutInflater.from(context);
-        this.listener = listener;
+        this.itemClickListener = itemClickListener;
+        this.bindEndListener = bindEndListener;
     }
 
     @Override
@@ -46,7 +52,11 @@ public class ArticleListAdapter extends RecyclerView.Adapter {
             itemView.setTags(concatenateTags(article.getTags()));
             itemView.setTime(DateUtils.getRelativeTimeSpanString(
                     article.getCreatedAt().getTime(), System.currentTimeMillis(), 0));
-            itemView.setOnClickListener(v -> listener.onListItemClick(article));
+            itemView.setOnClickListener(v -> itemClickListener.onListItemClick(article));
+        }
+
+        if (position == articles.size() - 1) {
+            bindEndListener.onBindEnd(position);
         }
     }
 

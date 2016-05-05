@@ -91,7 +91,9 @@ public class MainActivity extends AppCompatActivity implements TopView {
 
     @Override
     public void initView() {
-        articleListAdapter = new ArticleListAdapter(this, topPresenter::onClickListItem);
+        articleListAdapter = new ArticleListAdapter(this,
+                topPresenter::onClickListItem,
+                topPresenter::onBindEnd);
         setSupportActionBar(toolbar);
         listView.setLayoutManager(new LinearLayoutManager(this));
         listView.setAdapter(articleListAdapter);

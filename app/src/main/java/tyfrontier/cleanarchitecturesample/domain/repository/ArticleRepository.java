@@ -5,5 +5,5 @@ import tyfrontier.cleanarchitecturesample.domain.model.Article;
 
 public interface ArticleRepository {
 
-    Observable<Article> findArticles();
+    Observable<Article> findArticles(int requestIndex);
 }

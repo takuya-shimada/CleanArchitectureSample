@@ -38,7 +38,7 @@ public class TopPresenterImpl implements TopPresenter {
     @Override
     public void onStart() {
         topView.resetView();
-        subscription = findArticles.call(1)
+        subscription = findArticles.call(0)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(topView::addArticle);
@@ -64,6 +64,14 @@ public class TopPresenterImpl implements TopPresenter {
     @Override
     public void onClickListItem(Article article) {
         activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(article.getUrl().toString())));
+    }
+
+    @Override
+    public void onBindEnd(int position) {
+        subscription = findArticles.call(position + 1)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(topView::addArticle);
     }
 
     @Override
