@@ -10,7 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-import tyfrontier.cleanarchitecturesample.data.api.mapper.ArticleTagMapper;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
 
 public class ArticleDto {
@@ -55,7 +54,7 @@ public class ArticleDto {
             return new Article(
                     articleDto.id,
                     articleDto.title,
-                    new ArticleTagMapper().map(articleDto.tags),
+                    ArticleTagDto.map(articleDto.tags),
                     articleDto.user.id,
                     timeFormat.parse(articleDto.createdAt),
                     new URL(articleDto.url));
