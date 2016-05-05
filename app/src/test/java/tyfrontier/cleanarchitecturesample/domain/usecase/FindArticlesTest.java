@@ -31,11 +31,11 @@ public class FindArticlesTest {
 
     @Test
     public void testCall() throws Exception {
-        TestSubscriber<List<Article>> testSubscriber = new TestSubscriber<>();
+        TestSubscriber<Article> testSubscriber = new TestSubscriber<>();
 
         findArticles.call(1).subscribe(testSubscriber);
         testSubscriber.assertNoErrors();
-        List<Article> articleList = testSubscriber.getOnNextEvents().get(0);
+        List<Article> articleList = testSubscriber.getOnNextEvents();
 
         assertThat(articleList, hasSize(greaterThan(0)));
     }
