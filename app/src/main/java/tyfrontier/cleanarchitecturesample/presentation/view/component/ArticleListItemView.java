@@ -5,16 +5,16 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import tyfrontier.cleanarchitecturesample.R;
 
 public class ArticleListItemView extends LinearLayout {
 
-    @Bind(R.id.title) TextView title;
-    @Bind(R.id.user) TextView userName;
-    @Bind(R.id.tags) TextView tags;
-    @Bind(R.id.time) TextView time;
+    @BindView(R.id.title) TextView title;
+    @BindView(R.id.user) TextView userName;
+    @BindView(R.id.tags) TextView tags;
+    @BindView(R.id.time) TextView time;
 
     public ArticleListItemView(Context context, AttributeSet attrs) {
         super(context, attrs);

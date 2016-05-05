@@ -11,7 +11,7 @@ import android.view.MenuItem;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import tyfrontier.cleanarchitecturesample.App;
 import tyfrontier.cleanarchitecturesample.R;
@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity implements TopView {
 
     @Inject TopPresenter topPresenter;
 
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.list) RecyclerView listView;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.list) RecyclerView listView;
 
     private ArticleListAdapter articleListAdapter;
 
