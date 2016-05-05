@@ -6,8 +6,10 @@ import android.net.Uri;
 
 import javax.inject.Inject;
 
+import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import tyfrontier.cleanarchitecturesample.di.PerActivity;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
@@ -68,6 +70,9 @@ public class TopPresenterImpl implements TopPresenter {
 
     @Override
     public void onBindEnd(int position) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
         subscription = findArticles.call(position + 1)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
