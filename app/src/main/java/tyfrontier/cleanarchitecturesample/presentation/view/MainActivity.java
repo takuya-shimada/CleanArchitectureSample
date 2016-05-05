@@ -2,6 +2,7 @@ package tyfrontier.cleanarchitecturesample.presentation.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements TopView {
         setSupportActionBar(toolbar);
         listView.setLayoutManager(new LinearLayoutManager(this));
         listView.setAdapter(articleListAdapter);
+        listView.setItemAnimator(new DefaultItemAnimator());
     }
 
     @Override
