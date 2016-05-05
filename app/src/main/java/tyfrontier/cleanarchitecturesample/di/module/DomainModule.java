@@ -2,8 +2,8 @@ package tyfrontier.cleanarchitecturesample.di.module;
 
 import dagger.Module;
 import dagger.Provides;
+import tyfrontier.cleanarchitecturesample.data.repository.ArticleRepositoryImpl;
 import tyfrontier.cleanarchitecturesample.domain.model.ArticleService;
-import tyfrontier.cleanarchitecturesample.domain.net.WebApi;
 import tyfrontier.cleanarchitecturesample.domain.usecase.FindArticles;
 import tyfrontier.cleanarchitecturesample.domain.usecase.FindArticlesImpl;
 
@@ -16,7 +16,7 @@ public class DomainModule {
     }
 
     @Provides
-    public ArticleService articleService(WebApi webApi) {
-        return new ArticleService(webApi);
+    public ArticleService articleService(ArticleRepositoryImpl articleRepository) {
+        return new ArticleService(articleRepository);
     }
 }

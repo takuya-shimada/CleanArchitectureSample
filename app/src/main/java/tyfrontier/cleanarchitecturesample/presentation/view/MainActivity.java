@@ -2,18 +2,17 @@ package tyfrontier.cleanarchitecturesample.presentation.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnItemClick;
 import tyfrontier.cleanarchitecturesample.App;
 import tyfrontier.cleanarchitecturesample.R;
 import tyfrontier.cleanarchitecturesample.di.module.screen.TopScreenModule;
@@ -27,7 +26,9 @@ public class MainActivity extends AppCompatActivity implements TopView {
     @Inject TopPresenter topPresenter;
 
     @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.list) ListView listView;
+    @Bind(R.id.list) RecyclerView listView;
+
+    private ArticleListAdapter articleListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,19 +89,25 @@ public class MainActivity extends AppCompatActivity implements TopView {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnItemClick(R.id.list)
-    public void onListItemClick(int position) {
-        topPresenter.onClickListItem((Article)listView.getAdapter().getItem(position));
-    }
-
     @Override
     public void initView() {
+        articleListAdapter = new ArticleListAdapter(this,
+                topPresenter::onClickListItem,
+                topPresenter::onBindEnd);
         setSupportActionBar(toolbar);
+        listView.setLayoutManager(new LinearLayoutManager(this));
+        listView.setAdapter(articleListAdapter);
+        listView.setItemAnimator(new DefaultItemAnimator());
     }
 
     @Override
-    public void showArticles(List<Article> articles) {
-        listView.setAdapter(new ArticleListAdapter(this, R.layout.article_list_item, articles));
+    public void resetView() {
+        articleListAdapter.clearItem();
+    }
+
+    @Override
+    public void addArticle(Article article) {
+        articleListAdapter.addItem(article);
     }
 
     @Override

@@ -6,5 +6,7 @@ public interface TopPresenter extends Presenter {
 
     void onClickListItem(Article article);
 
+    void onBindEnd(int position);
+
     void onClickAboutAppMenu();
 }

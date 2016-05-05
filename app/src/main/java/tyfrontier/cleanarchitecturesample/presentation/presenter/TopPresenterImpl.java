@@ -4,14 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
-import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import tyfrontier.cleanarchitecturesample.di.PerActivity;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
@@ -41,11 +39,15 @@ public class TopPresenterImpl implements TopPresenter {
 
     @Override
     public void onStart() {
+        topView.resetView();
+        subscription = findArticles.call(0)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(topView::addArticle);
     }
 
     @Override
     public void onResume() {
-        subscribe(findArticles.call(1), new ArticleSubscriber());
     }
 
     @Override
@@ -54,11 +56,11 @@ public class TopPresenterImpl implements TopPresenter {
 
     @Override
     public void onStop() {
+        subscription.unsubscribe();
     }
 
     @Override
     public void onDestroy() {
-        subscription.unsubscribe();
     }
 
     @Override
@@ -67,32 +69,18 @@ public class TopPresenterImpl implements TopPresenter {
     }
 
     @Override
-    public void onClickAboutAppMenu() {
-        topView.showAboutApp();
-    }
-
-    private void subscribe(Observable observable, Subscriber subscriber) {
-        subscription = observable
+    public void onBindEnd(int position) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
+        subscription = findArticles.call(position + 1)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(subscriber);
+                .subscribe(topView::addArticle);
     }
 
-    private final class ArticleSubscriber extends Subscriber<List<Article>> {
-
-        @Override
-        public void onCompleted() {
-
-        }
-
-        @Override
-        public void onError(Throwable e) {
-
-        }
-
-        @Override
-        public void onNext(List<Article> articles) {
-            topView.showArticles(articles);
-        }
+    @Override
+    public void onClickAboutAppMenu() {
+        topView.showAboutApp();
     }
 }

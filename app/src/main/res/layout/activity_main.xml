@@ -14,7 +14,7 @@
         android:elevation="@dimen/elevation_app_bar"
         app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"/>
 
-    <ListView
+    <tyfrontier.cleanarchitecturesample.presentation.view.component.DividedRecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

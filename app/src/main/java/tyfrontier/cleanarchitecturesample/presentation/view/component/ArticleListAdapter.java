@@ -1,35 +1,48 @@
 package tyfrontier.cleanarchitecturesample.presentation.view.component;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
+import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import tyfrontier.cleanarchitecturesample.R;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
 
-public class ArticleListAdapter extends ArrayAdapter<Article> {
+public class ArticleListAdapter extends RecyclerView.Adapter {
 
-    private List<Article> articles;
-    private int mItemLayoutResource;
-
-    public ArticleListAdapter(Context context, @LayoutRes int resource, List<Article> articles) {
-        super(context, resource);
-        this.articles = articles == null ? new ArrayList<Article>() : articles;
-        mItemLayoutResource = resource;
+    public interface ItemClickListener {
+        void onListItemClick(Article article);
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(mItemLayoutResource, null);
-        }
+    public interface BindEndListener {
+        void onBindEnd(int position);
+    }
 
-        ArticleListItemView itemView = (ArticleListItemView)convertView;
+    private final LayoutInflater inflater;
+
+    private final List<Article> articles = new ArrayList<>();
+    private final ItemClickListener itemClickListener;
+    private final BindEndListener bindEndListener;
+
+    public ArticleListAdapter(Context context, ItemClickListener itemClickListener, BindEndListener bindEndListener) {
+        inflater = LayoutInflater.from(context);
+        this.itemClickListener = itemClickListener;
+        this.bindEndListener = bindEndListener;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        return new MyViewHolder(inflater.inflate(R.layout.article_list_item, viewGroup, false));
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+        ArticleListItemView itemView = (ArticleListItemView)viewHolder.itemView;
         itemView.setTag(position);
 
         Article article = articles.get(position);
@@ -39,19 +52,27 @@ public class ArticleListAdapter extends ArrayAdapter<Article> {
             itemView.setTags(concatenateTags(article.getTags()));
             itemView.setTime(DateUtils.getRelativeTimeSpanString(
                     article.getCreatedAt().getTime(), System.currentTimeMillis(), 0));
+            itemView.setOnClickListener(v -> itemClickListener.onListItemClick(article));
         }
 
-        return convertView;
+        if (position == articles.size() - 1) {
+            bindEndListener.onBindEnd(position);
+        }
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return articles.size();
     }
 
-    @Override
-    public Article getItem(int position) {
-        return articles.get(position);
+    public void clearItem() {
+        articles.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addItem(Article article) {
+        articles.add(article);
+        notifyItemInserted(getItemCount()-1);
     }
 
     private String concatenateTags(List<String> tags) {
@@ -61,5 +82,11 @@ public class ArticleListAdapter extends ArrayAdapter<Article> {
         }
 
         return stringBuilder.toString();
+    }
+
+    private static class MyViewHolder extends RecyclerView.ViewHolder {
+        public MyViewHolder(View itemView) {
+            super(itemView);
+        }
     }
 }
