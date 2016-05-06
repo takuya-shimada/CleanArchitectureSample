@@ -4,13 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Inject;
 
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
+import tyfrontier.cleanarchitecturesample.R;
 import tyfrontier.cleanarchitecturesample.di.PerActivity;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
 import tyfrontier.cleanarchitecturesample.domain.usecase.FindArticles;
@@ -43,7 +45,7 @@ public class TopPresenterImpl implements TopPresenter {
         subscription = findArticles.call(0)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(topView::addArticle);
+                .subscribe(topView::addArticle, this::showError);
     }
 
     @Override
@@ -76,11 +78,21 @@ public class TopPresenterImpl implements TopPresenter {
         subscription = findArticles.call(position + 1)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(topView::addArticle);
+                .subscribe(topView::addArticle, this::showError);
     }
 
     @Override
     public void onClickAboutAppMenu() {
         topView.showAboutApp();
+    }
+
+    private void showError(Throwable throwable) {
+        AndroidSchedulers.mainThread().createWorker().schedule(() ->
+                topView.showError(
+                        throwable instanceof IOException ?
+                                R.string.list_error_connection :
+                                R.string.list_error_other),
+                500,
+                TimeUnit.MILLISECONDS);
     }
 }

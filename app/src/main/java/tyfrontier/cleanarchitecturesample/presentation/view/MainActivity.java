@@ -1,5 +1,6 @@
 package tyfrontier.cleanarchitecturesample.presentation.view;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 
 import javax.inject.Inject;
 
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements TopView {
 
     @Inject TopPresenter topPresenter;
 
+    @BindView(R.id.root) ViewGroup rootView;
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.list) RecyclerView listView;
 
@@ -113,5 +116,10 @@ public class MainActivity extends AppCompatActivity implements TopView {
     @Override
     public void showAboutApp() {
         new AboutAppDialog().show(getSupportFragmentManager(), null);
+    }
+
+    @Override
+    public void showError(int stringResId) {
+        Snackbar.make(rootView, stringResId, Snackbar.LENGTH_SHORT).show();
     }
 }
