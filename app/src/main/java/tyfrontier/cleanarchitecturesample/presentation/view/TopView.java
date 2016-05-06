@@ -11,4 +11,6 @@ public interface TopView {
     void addArticle(Article article);
 
     void showAboutApp();
+
+    void showError(int stringResId);
 }

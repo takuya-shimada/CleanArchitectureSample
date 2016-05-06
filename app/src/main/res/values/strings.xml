@@ -4,6 +4,9 @@
 
     <string name="menu_about_app">About App</string>
 
+    <string name="list_error_connection">No connection</string>
+    <string name="list_error_other">System error</string>
+
     <string name="dialog_title">About app</string>
     <string name="dialog_message">This is an Android clean architecture sample. The domain logic is so simple.</string>
     <string name="dialog_button_label">OK</string>
