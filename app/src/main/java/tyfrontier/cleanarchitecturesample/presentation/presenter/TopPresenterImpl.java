@@ -87,6 +87,7 @@ public class TopPresenterImpl implements TopPresenter {
     }
 
     private void showError(Throwable throwable) {
+        throwable.printStackTrace();
         AndroidSchedulers.mainThread().createWorker().schedule(() ->
                 topView.showError(
                         throwable instanceof IOException ?
