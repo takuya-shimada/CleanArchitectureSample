@@ -7,9 +7,7 @@ exit 0
 fi
 
 # ここからバージョンの書き換え処理開始
-cd app
-
-file=build.gradle
+file=app/build.gradle
 branch=`git log -n1 --oneline --decorate=short | grep -o -e "origin\/[a-z/_.0-9]\+" | sed -e "s/^origin\///g"`
 
 ## ブランチをチェックアウト
@@ -28,13 +26,11 @@ LANG=C
 NOLOCALE=1
 find -maxdepth 1 -name "${file}" | xargs sed -i "s/versionBuild = \(.*\)/versionBuild = $version_build/"
 
-cd ../
-
 ## コミット
 repository=tyfrontier/CleanArchitectureSample
 
 git config --global user.email "shimada@1923.co.jp"
 git config --global user.name "Takuya Shimada"
-git add .
+git add ${file}
 git commit -m "[deploy] r${version_build} v${version_major}.${version_minor}.${version_patch}"
 git push -f git@github.com:${repository} ${branch}
