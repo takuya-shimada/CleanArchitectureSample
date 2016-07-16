@@ -6,8 +6,8 @@ machine:
 
 dependencies:
   pre:
-    - echo y | android update sdk --no-ui --all --filter "tools,platform-tools,android-23,extra-google-m2repository,extra-google-google_play_services,extra-android-support"
-    - echo y | android update sdk --no-ui --all --filter "build-tools-23.0.2"
+    - echo y | android update sdk --no-ui --filter "tools,platform-tools,android-23,extra-google-m2repository,extra-google-google_play_services,extra-android-support"
+    - echo y | android update sdk --no-ui --filter "build-tools-23.0.2"
   cache_directories:
     - ~/.android
 
@@ -15,4 +15,4 @@ deployment:
   production:
     branch: master
     commands:
-      - ./gradlew uploadDeployGateRelease
+      - bash deploy_or_update.sh
