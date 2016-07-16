@@ -3,12 +3,12 @@ package tyfrontier.cleanarchitecturesample.di.component;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import tyfrontier.cleanarchitecturesample.di.module.DataModule;
+import tyfrontier.cleanarchitecturesample.di.module.TestDataModule;
 import tyfrontier.cleanarchitecturesample.domain.net.WebApiTest;
 
 @Component(
         modules = {
-                DataModule.class,
+                TestDataModule.class,
         }
 )
 @Singleton

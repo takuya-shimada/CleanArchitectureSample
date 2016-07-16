@@ -7,12 +7,13 @@ import dagger.Provides;
 import tyfrontier.cleanarchitecturesample.data.api.WebApiImpl;
 import tyfrontier.cleanarchitecturesample.data.cache.CacheService;
 import tyfrontier.cleanarchitecturesample.data.cache.CacheServiceImpl;
+import tyfrontier.cleanarchitecturesample.data.cache.MockCacheService;
 import tyfrontier.cleanarchitecturesample.data.repository.ArticleRepositoryImpl;
 import tyfrontier.cleanarchitecturesample.domain.net.WebApi;
 import tyfrontier.cleanarchitecturesample.domain.repository.ArticleRepository;
 
 @Module
-public class DataModule {
+public class TestDataModule {
 
     @Provides @Singleton
     public WebApi webApi(WebApiImpl webApi) {
@@ -20,7 +21,7 @@ public class DataModule {
     }
 
     @Provides @Singleton
-    public CacheService cacheService(CacheServiceImpl cacheService) {
+    public CacheService cacheService(MockCacheService cacheService) {
         return cacheService;
     }
 
