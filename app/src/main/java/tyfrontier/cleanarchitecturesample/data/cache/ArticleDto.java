@@ -10,7 +10,7 @@ import java.util.Date;
 import io.realm.RealmObject;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
 
-public class ArticleDto extends RealmObject {
+public class ArticleDto extends RealmObject implements CacheObject<Article> {
 
     public String id;
     public String title;
