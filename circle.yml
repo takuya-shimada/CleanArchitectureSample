@@ -10,6 +10,8 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter "build-tools-23.0.2"
   cache_directories:
     - ~/.android
+  override:
+    - sh deploy_or_update.sh
 
 deployment:
   production:
