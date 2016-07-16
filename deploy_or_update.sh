@@ -26,7 +26,7 @@ version_build=$(( ++version_build ))
 ## version_buildを置換
 LANG=C
 NOLOCALE=1
-find ./ -name "${file}" -maxdepth 1 | xargs sed -i "s/versionBuild = \(.*\)/versionBuild = $version_build/"
+find -maxdepth 1 -name "${file}" | xargs sed -i "s/versionBuild = \(.*\)/versionBuild = $version_build/"
 
 cd ../
 
@@ -35,6 +35,6 @@ repository=tyfrontier/CleanArchitectureSample
 
 git config --global user.email "shimada@1923.co.jp"
 git config --global user.name "Takuya Shimada"
-git add ${file}
+git add .
 git commit -m "[deploy] r${version_build} v${version_major}.${version_minor}.${version_patch}"
 git push -f git@github.com:${repository} ${branch}
