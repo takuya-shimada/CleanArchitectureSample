@@ -78,7 +78,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     dexOptions {
-        incremental !(System.getenv()["CIRCLECI"] as boolean)
         preDexLibraries = !(System.getenv()["CIRCLECI"] as boolean)
         javaMaxHeapSize "1g"
     }
