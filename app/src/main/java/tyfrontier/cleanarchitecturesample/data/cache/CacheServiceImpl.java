@@ -1,5 +1,8 @@
 package tyfrontier.cleanarchitecturesample.data.cache;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import io.realm.Realm;
@@ -20,12 +23,14 @@ public class CacheServiceImpl implements CacheService {
     }
 
     @Override
-    public <T, E extends RealmObject & CacheObject<T>> Observable<T> get(final Class<E> clazz) {
+    public <T, E extends RealmObject & CacheObject<T>> Observable<List<T>> get(final Class<E> clazz) {
         return Observable.create(subscriber -> {
             Realm realm = Realm.getDefaultInstance();
+            List<T> list = new ArrayList<>();
             for (E result : realm.where(clazz).findAll()) {
-                subscriber.onNext(result.map());
+                list.add(result.map());
             }
+            subscriber.onNext(list);
             subscriber.onCompleted();
             realm.close();
         });

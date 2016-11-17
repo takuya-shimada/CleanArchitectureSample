@@ -5,16 +5,14 @@ import javax.inject.Inject;
 import rx.Observable;
 import tyfrontier.cleanarchitecturesample.data.api.dto.ArticleDto;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
-import tyfrontier.cleanarchitecturesample.domain.net.WebApi;
 
 public class WebApiImpl implements WebApi {
 
-    private static final String BASE_URL = "https://qiita.com/";
-
-    private ApiService apiService = ApiServiceFactory.createRetrofitService(ApiService.class, BASE_URL);
+    private ApiService apiService;
 
     @Inject
-    public WebApiImpl() {
+    public WebApiImpl(ApiService apiService) {
+        this.apiService = apiService;
     }
 
     @Override

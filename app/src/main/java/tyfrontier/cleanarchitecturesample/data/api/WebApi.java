@@ -1,4 +1,4 @@
-package tyfrontier.cleanarchitecturesample.domain.net;
+package tyfrontier.cleanarchitecturesample.data.api;
 
 import rx.Observable;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;

@@ -17,7 +17,6 @@ public class App extends Application {
         super.onCreate();
         appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
         RealmConfiguration config = new RealmConfiguration.Builder(this).build();
-        Realm.deleteRealm(config);
         Realm.setDefaultConfiguration(config);
     }
 
