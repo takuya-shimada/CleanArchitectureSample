@@ -22,11 +22,11 @@ public class MockCacheService implements CacheService {
     }
 
     @Override
-    public <T, E extends RealmObject & CacheObject<T>> Observable<T> get(final Class<E> clazz) {
+    public <T, E extends RealmObject & CacheObject<T>> Observable<List<T>> get(final Class<E> clazz) {
         if (cache.size() == 0) {
             return Observable.empty();
         }
-        return Observable.from((Iterable<? extends T>) cache);
+        return Observable.from((Iterable<T>) cache).toList();
     }
 
     @Override
