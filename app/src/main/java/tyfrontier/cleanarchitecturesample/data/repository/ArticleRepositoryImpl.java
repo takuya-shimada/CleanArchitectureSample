@@ -8,7 +8,7 @@ import rx.Observable;
 import tyfrontier.cleanarchitecturesample.data.cache.ArticleDto;
 import tyfrontier.cleanarchitecturesample.data.cache.CacheService;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
-import tyfrontier.cleanarchitecturesample.domain.net.WebApi;
+import tyfrontier.cleanarchitecturesample.data.api.WebApi;
 import tyfrontier.cleanarchitecturesample.domain.repository.ArticleRepository;
 
 public class ArticleRepositoryImpl implements ArticleRepository {

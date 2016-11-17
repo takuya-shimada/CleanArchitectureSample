@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import rx.Observable;
 import tyfrontier.cleanarchitecturesample.data.api.dto.ArticleDto;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
-import tyfrontier.cleanarchitecturesample.domain.net.WebApi;
 
 public class WebApiImpl implements WebApi {
 

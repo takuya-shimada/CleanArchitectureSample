@@ -9,6 +9,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import rx.observers.TestSubscriber;
+import tyfrontier.cleanarchitecturesample.data.api.WebApi;
 import tyfrontier.cleanarchitecturesample.di.component.DaggerTestDataComponent;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
 

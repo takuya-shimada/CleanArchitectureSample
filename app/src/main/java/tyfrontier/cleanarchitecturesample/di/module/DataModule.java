@@ -8,7 +8,7 @@ import tyfrontier.cleanarchitecturesample.data.api.WebApiImpl;
 import tyfrontier.cleanarchitecturesample.data.cache.CacheService;
 import tyfrontier.cleanarchitecturesample.data.cache.CacheServiceImpl;
 import tyfrontier.cleanarchitecturesample.data.repository.ArticleRepositoryImpl;
-import tyfrontier.cleanarchitecturesample.domain.net.WebApi;
+import tyfrontier.cleanarchitecturesample.data.api.WebApi;
 import tyfrontier.cleanarchitecturesample.domain.repository.ArticleRepository;
 
 @Module
