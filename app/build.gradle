@@ -1,7 +1,7 @@
 def versionMajor = 0
 def versionMinor = 1
 def versionPatch = 1
-def versionBuild = 4
+def versionBuild = 5
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
