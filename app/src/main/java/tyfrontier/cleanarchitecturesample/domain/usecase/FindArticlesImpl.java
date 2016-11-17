@@ -4,19 +4,19 @@ import javax.inject.Inject;
 
 import rx.Observable;
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
-import tyfrontier.cleanarchitecturesample.domain.model.ArticleService;
+import tyfrontier.cleanarchitecturesample.domain.repository.ArticleRepository;
 
 public class FindArticlesImpl implements FindArticles {
 
-    private final ArticleService articleService;
+    private final ArticleRepository articleRepository;
 
     @Inject
-    public FindArticlesImpl(ArticleService articleService) {
-        this.articleService = articleService;
+    public FindArticlesImpl(ArticleRepository articleRepository) {
+        this.articleRepository = articleRepository;
     }
 
     @Override
     public Observable<Article> call(Integer requestIndex) {
-        return articleService.findArticles(requestIndex);
+        return articleRepository.findArticles(requestIndex);
     }
 }
