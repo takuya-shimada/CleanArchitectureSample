@@ -8,12 +8,11 @@ import tyfrontier.cleanarchitecturesample.domain.model.Article;
 
 public class WebApiImpl implements WebApi {
 
-    private static final String BASE_URL = "https://qiita.com/";
-
-    private ApiService apiService = ApiServiceFactory.createRetrofitService(ApiService.class, BASE_URL);
+    private ApiService apiService;
 
     @Inject
-    public WebApiImpl() {
+    public WebApiImpl(ApiService apiService) {
+        this.apiService = apiService;
     }
 
     @Override
