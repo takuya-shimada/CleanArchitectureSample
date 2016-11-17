@@ -1,5 +1,7 @@
 package tyfrontier.cleanarchitecturesample.domain.usecase;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import rx.Observable;
@@ -16,7 +18,7 @@ public class FindArticlesImpl implements FindArticles {
     }
 
     @Override
-    public Observable<Article> call(Integer requestIndex) {
+    public Observable<List<Article>> call(Integer requestIndex) {
         return articleRepository.findArticles(requestIndex);
     }
 }

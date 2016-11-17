@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -109,8 +111,10 @@ public class MainActivity extends AppCompatActivity implements TopView {
     }
 
     @Override
-    public void addArticle(Article article) {
-        articleListAdapter.addItem(article);
+    public void addArticle(List<Article> articles) {
+        for (Article article : articles) {
+            articleListAdapter.addItem(article);
+        }
     }
 
     @Override

@@ -1,5 +1,7 @@
 package tyfrontier.cleanarchitecturesample.presentation.view;
 
+import java.util.List;
+
 import tyfrontier.cleanarchitecturesample.domain.model.Article;
 
 public interface TopView {
@@ -8,7 +10,7 @@ public interface TopView {
 
     void resetView();
 
-    void addArticle(Article article);
+    void addArticle(List<Article> article);
 
     void showAboutApp();
 

@@ -1,5 +1,7 @@
 package tyfrontier.cleanarchitecturesample.data.repository;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import rx.Observable;
@@ -23,10 +25,11 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     }
 
     @Override
-    public Observable<Article> findArticles(int requestIndex) {
+    public Observable<List<Article>> findArticles(int requestIndex) {
         return cache.count(ArticleDto.class) < requestIndex + 1
                 ? webApi.getArticles(requestIndex / NUM_PER_PAGE + 1, NUM_PER_PAGE)
-                        .doOnNext(article -> cache.set(ArticleDto.class, article))
+                    .doOnNext(article -> cache.set(ArticleDto.class, article))
+                    .toList()
                 : cache.get(ArticleDto.class);
     }
 }
